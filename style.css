@@ -54,7 +54,10 @@ nav ul li{
 }
 
 .icons{
-    margin-top: 34px;
+    margin-top: 14px;
+}
+.icons i{
+    cursor: pointer;
 }
 
 #myProgressBar{
