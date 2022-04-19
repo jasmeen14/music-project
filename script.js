@@ -48,3 +48,22 @@ audioElement.addEventListener('timeupdate',()=>{
 myProgressBar.addEventListener('change',()=>{
     audioElement.currentTime = myProgressBar.value * audioElement.duration/100;
 })
+
+const makeAllPlays = ()=>{
+    Array.from(document.getElementsByClassName('songItemPlay')).forEach((element)=>{
+        element.classList.remove('fa-circle-pause');
+    element.classList.add('fa-circle-play');
+   
+
+    })
+}
+Array.from(document.getElementsByClassName('songItemPlay')).forEach((element)=> {
+   element.addEventListener('click',(e)=>{
+       makeAllPlays();
+       e.target.classList.remove('fa-circle-play');
+       e.target.classList.add('fa-circle-pause');
+       audioElement.src = 'music/Sauda Khara Khara.mp3';
+       audioElement.currentTime = 0;
+       audioElement.play();   
+    })
+});
