@@ -8,16 +8,16 @@ let myProgressBar = document.getElementById('myProgressBar');
 let gif = document.getElementById('gif');
 
 let songs = [
-    {songName: "Ranjha",filePath: "music/ranjha.mp3",coverPath: "images/ranjha.jpeg"},
-    {songName: "Ranjha",filePath: "music/ranjha.mp3",coverPath: "images/ranjha.jpeg"},
-    {songName: "Ranjha",filePath: "music/ranjha.mp3",coverPath: "images/ranjha.jpeg"},
-    {songName: "Ranjha",filePath: "music/ranjha.mp3",coverPath: "images/ranjha.jpeg"},
-    {songName: "Ranjha",filePath: "music/ranjha.mp3",coverPath: "images/ranjha.jpeg"},
-    {songName: "Ranjha",filePath: "music/ranjha.mp3",coverPath: "images/ranjha.jpeg"},
-    {songName: "Ranjha",filePath: "music/ranjha.mp3",coverPath: "images/ranjha.jpeg"},
-    {songName: "Ranjha",filePath: "music/ranjha.mp3",coverPath: "images/ranjha.jpeg"},
-    {songName: "Ranjha",filePath: "music/ranjha.mp3",coverPath: "images/ranjha.jpeg"},
-    {songName: "Ranjha",filePath: "music/ranjha.mp3",coverPath: "images/ranjha.jpeg"},
+    {songName: "Ranjha",filePath: "music/Ranjha.mp3",coverPath: "images/ranjha.jpeg"},
+    {songName: "Raataan Lambiyan",filePath: "music/Raataan Lambiyan.mp3",coverPath: "images/raataan-labiyan.jpeg"},
+    {songName: "Sauda Khara Khara",filePath: "music/Sauda Khara Khara.mp3",coverPath: "images/sauda-khara-khara.jpeg"},
+    {songName: "Cheez Badi",filePath: "music/Cheez Badi.mp3",coverPath: "images/cheez-badi.jpeg"},
+    {songName: "Jab Tak",filePath: "music/Jab Tak.mp3",coverPath: "images/jab-tak.jpeg"},
+    {songName: "Mere Sohneya",filePath: "music/Mere Sohneya.mp3",coverPath: "images/MERE-SOHNEYA.jpeg"},
+    {songName: "Kaise Hua",filePath: "music/Kaise Hua.mp3",coverPath: "images/kaise-hua.jpeg"},
+    {songName: "Hasina Pagal Deewani",filePath: "music/Hasina Pagal Deewani.mp3",coverPath: "images/hasina-pagal-deewani.jpeg"},
+    {songName: "Tera Ban Jaunga",filePath: "music/Tera Ban Jaunga.mp3",coverPath: "images/tera-ban-jaunga.jpeg"},
+    {songName: "Burjkhalifa",filePath: "music/Burjkhalifa.mp3",coverPath: "images/burjkhalifa.jpeg"},
 ]
  
 
@@ -40,9 +40,11 @@ masterPlay.addEventListener('click',()=>{
 })
 //listen events
 audioElement.addEventListener('timeupdate',()=>{
-     console.log('timeupdate');
      //Update Seekbar
      progress = parseInt((audioElement.currentTime/audioElement.duration)*100);
-     console.log(progress);
      myProgressBar.value = progress;
+})
+
+myProgressBar.addEventListener('change',()=>{
+    audioElement.currentTime = myProgressBar.value * audioElement.duration/100;
 })
