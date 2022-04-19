@@ -73,11 +73,13 @@ nav ul li{
     width: 80vw;
 }
 
+.songItemContainer{
+    margin-top: 44px;
+}
 .songItem{
      height: 50px;
      display: flex;
      background-color: white;
-     width: 70%;
      color: black;
      margin: 12px 0;
      justify-content: space-between;
@@ -93,4 +95,8 @@ nav ul li{
 
 .timestamp{
     margin: 0 23px;
+}
+
+.timestamp i{
+    cursor: pointer;
 }
