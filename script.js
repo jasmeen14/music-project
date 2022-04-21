@@ -10,7 +10,7 @@ let songItems = Array.from(document.getElementsByClassName('songItem'));
 
 let songs = [
     {songName: "Ranjha",filePath: "music/Ranjha.mp3",coverPath: "images/ranjha.jpg"},
-    {songName: "Raataan Lambiyan",filePath: "music/Raataan_Lambiyan.mp3",coverPath: "images/raataan-labiyan.jpg"},
+    {songName: "Raataan Lambiyan",filePath: "music/Raataan_Lambiyan.mp3",coverPath: "images/raataan-lambiyan.jpg"},
     {songName: "Sauda Khara Khara",filePath: "music/Sauda_Khara_Khara.mp3",coverPath: "images/sauda-khara-khara.jpg"},
     {songName: "Cheez Badi",filePath: "music/Cheez_Badi.mp3",coverPath: "images/cheez-badi.jpg"},
     {songName: "Jab Tak",filePath: "music/Jab_Tak.mp3",coverPath: "images/jab-tak.jpg"},
@@ -21,7 +21,7 @@ let songs = [
     {songName: "Burjkhalifa",filePath: "music/Burjkhalifa.mp3",coverPath: "images/burjkhalifa.jpg"},
 ]
   songItems.forEach((element,i)=>{
-      console.log(element,i);
+      //console.log(element,i);
      element.getElementsByTagName("img")[0].src = songs[i].coverPath;
   })
 
@@ -65,11 +65,11 @@ Array.from(document.getElementsByClassName('songItemPlay')).forEach((element)=> 
    element.addEventListener('click',(e)=>{
        makeAllPlays();
        index = parseInt(e.target.id);
-       console.log(index);
+       //console.log(e.target.id);
        e.target.classList.remove('fa-circle-play');
        e.target.classList.add('fa-circle-pause');
-       console.log(index);
-       audioElement.src = 'music/${index}.mp3';
+       console.log(songs[index].filePath);
+       audioElement.src = songs[index].filePath;//'music/${index}.mp3';
        console.log(audioElement.src);
        audioElement.currentTime = 0;
        audioElement.play();  
