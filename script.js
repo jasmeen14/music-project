@@ -6,20 +6,24 @@ let audioElement = new Audio("music/ranjha.mp3");
 let masterPlay = document.getElementById('masterPlay');
 let myProgressBar = document.getElementById('myProgressBar');
 let gif = document.getElementById('gif');
+let songItems = Array.from(document.getElementsByClassName('songItem'));
 
 let songs = [
-    {songName: "Ranjha",filePath: "music/Ranjha.mp3",coverPath: "images/ranjha.jpeg"},
-    {songName: "Raataan Lambiyan",filePath: "music/Raataan Lambiyan.mp3",coverPath: "images/raataan-labiyan.jpeg"},
-    {songName: "Sauda Khara Khara",filePath: "music/Sauda Khara Khara.mp3",coverPath: "images/sauda-khara-khara.jpeg"},
-    {songName: "Cheez Badi",filePath: "music/Cheez Badi.mp3",coverPath: "images/cheez-badi.jpeg"},
-    {songName: "Jab Tak",filePath: "music/Jab Tak.mp3",coverPath: "images/jab-tak.jpeg"},
-    {songName: "Mere Sohneya",filePath: "music/Mere Sohneya.mp3",coverPath: "images/MERE-SOHNEYA.jpeg"},
-    {songName: "Kaise Hua",filePath: "music/Kaise Hua.mp3",coverPath: "images/kaise-hua.jpeg"},
-    {songName: "Hasina Pagal Deewani",filePath: "music/Hasina Pagal Deewani.mp3",coverPath: "images/hasina-pagal-deewani.jpeg"},
-    {songName: "Tera Ban Jaunga",filePath: "music/Tera Ban Jaunga.mp3",coverPath: "images/tera-ban-jaunga.jpeg"},
-    {songName: "Burjkhalifa",filePath: "music/Burjkhalifa.mp3",coverPath: "images/burjkhalifa.jpeg"},
+    {songName: "Ranjha",filePath: "music/Ranjha.mp3",coverPath: "images/ranjha.jpg"},
+    {songName: "Raataan Lambiyan",filePath: "music/Raataan_Lambiyan.mp3",coverPath: "images/raataan-labiyan.jpg"},
+    {songName: "Sauda Khara Khara",filePath: "music/Sauda_Khara_Khara.mp3",coverPath: "images/sauda-khara-khara.jpg"},
+    {songName: "Cheez Badi",filePath: "music/Cheez_Badi.mp3",coverPath: "images/cheez-badi.jpg"},
+    {songName: "Jab Tak",filePath: "music/Jab_Tak.mp3",coverPath: "images/jab-tak.jpg"},
+    {songName: "Mere Sohneya",filePath: "music/Mere_Sohneya.mp3",coverPath: "images/MERE-SOHNEYA.jpg"},
+    {songName: "Kaise Hua",filePath: "music/Kaise_Hua.mp3",coverPath: "images/kaise-hua.jpg"},
+    {songName: "Hasina Pagal Deewani",filePath: "music/Hasina_Pagal_Deewani.mp3",coverPath: "images/hasina-pagal-deewani.jpg"},
+    {songName: "Tera Ban Jaunga",filePath: "music/Tera_Ban_Jaunga.mp3",coverPath: "images/tera-ban-jaunga.jpg"},
+    {songName: "Burjkhalifa",filePath: "music/Burjkhalifa.mp3",coverPath: "images/burjkhalifa.jpg"},
 ]
- 
+  songItems.forEach((element,i)=>{
+      console.log(element,i);
+     element.getElementsByTagName("img")[0].src = songs[i].coverPath;
+  })
 
 //audioElement.play();
 
@@ -40,7 +44,7 @@ masterPlay.addEventListener('click',()=>{
 })
 //listen events
 audioElement.addEventListener('timeupdate',()=>{
-     //Update Seekbar
+//Update Seekbar
      progress = parseInt((audioElement.currentTime/audioElement.duration)*100);
      myProgressBar.value = progress;
 })
@@ -60,10 +64,16 @@ const makeAllPlays = ()=>{
 Array.from(document.getElementsByClassName('songItemPlay')).forEach((element)=> {
    element.addEventListener('click',(e)=>{
        makeAllPlays();
+       index = parseInt(e.target.id);
+       console.log(index);
        e.target.classList.remove('fa-circle-play');
        e.target.classList.add('fa-circle-pause');
-       audioElement.src = 'music/Sauda Khara Khara.mp3';
+       console.log(index);
+       audioElement.src = 'music/${index}.mp3';
+       console.log(audioElement.src);
        audioElement.currentTime = 0;
-       audioElement.play();   
+       audioElement.play();  
+       masterPlay.classList.remove('fa-circle-play');
+       masterPlay.classList.add('fa-circle-pause'); 
     })
-});
+})
